@@ -6,13 +6,13 @@ authors       = [
   "Ethan Frey <ethanfrey@users.noreply.github.com>",
   "Orkun Külçe <orkun@deuslabs.fi>",
 ]
-version       = { workspace = true }
-edition       = { workspace = true }
-license       = { workspace = true }
-repository    = { workspace = true }
-homepage      = { workspace = true }
-documentation = { workspace = true }
-rust-version  = { workspace = true }
+version       = "0.1.0"
+edition       = "2021"
+license       = "Apache-2.0"
+repository    = "https://github.com/CosmWasm/cw-nfts"
+homepage      = "https://github.com/CosmWasm/cw-nfts"
+documentation = "https://docs.rs/cw721-metadata-onchain"
+rust-version  = "1.60.0"
 
 [lib]
 doctest      = false # disable doc tests
@@ -23,11 +23,11 @@ crate-type = ["cdylib", "rlib"]
 library = []
 
 [dependencies]
-cosmwasm-schema = { workspace = true }
-cosmwasm-std    = "1.5.10" # Use the same version as required by your dependencies
-cw2             = { workspace = true }
-cw721           = { workspace = true }
-schemars        = { workspace = true }
-serde           = { workspace = true }
+cosmwasm-schema = "1.5.0"
+cosmwasm-std    = "1.5.10"
+cw2             = "1.0.1"
+cw721           = "0.17.0"
+schemars        = "0.8.12"
+serde           = { version = "1.0", features = ["derive"] }
 cw-storage-plus = "0.14"
 thiserror = "1.0"
