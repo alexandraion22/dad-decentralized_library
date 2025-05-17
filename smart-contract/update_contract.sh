@@ -26,7 +26,7 @@ echo "Using WASM file: $WASM_FILE"
 
 # 2. Upload the new contract code
 echo "Uploading new contract code..."
-TX_HASH=$(echo "$PASSPHRASE" | injectived tx wasm store "$WASM_FILE" --from $WALLET_ADDR --fees $STORE_FEES --gas 1700000 -y | grep txhash | awk '{print $2}')
+TX_HASH=$(echo "$PASSPHRASE" | injectived tx wasm store "$WASM_FILE" --from $WALLET_ADDR --fees $STORE_FEES --gas 2100000 -y | grep txhash | awk '{print $2}')
 
 echo "Waiting for transaction to be processed..."
 sleep 5

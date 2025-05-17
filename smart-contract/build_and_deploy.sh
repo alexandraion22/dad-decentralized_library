@@ -16,7 +16,7 @@ wasm-strip target/wasm32-unknown-unknown/release/cw721_metadata_onchain.wasm
 
 # 2. Upload the contract
 echo "Uploading contract..."
-TX_HASH=$(injectived tx wasm store $WASM_TARGET --from $WALLET_ADDR --fees $STORE_FEES --gas 1700000 -y | grep txhash | awk '{print $2}')
+TX_HASH=$(injectived tx wasm store $WASM_TARGET --from $WALLET_ADDR --fees $STORE_FEES --gas 2100000 -y | grep txhash | awk '{print $2}')
 
 echo "Waiting for transaction to be processed..."
 sleep 5
