@@ -7,17 +7,24 @@ type Props = {};
 const WalletConnect = (props: Props) => {
   const { injectiveAddress, connectWallet } = useWalletStore();
 
-  const formattedAddress = `${injectiveAddress.slice(
-    0,
-    5
-  )}...${injectiveAddress.slice(-5)}`;
-
   function handleConnectWallet() {
-    connectWallet().catch(() => alert("Error"));
+    connectWallet().catch((error) => {
+      console.error("Wallet connection error:", error);
+      alert(`Error connecting wallet: ${error.message || "Unknown error"}`);
+    });
   }
+
+  // Use a style object for the button to make it wider
+  const buttonStyle = {
+    minWidth: '240px',
+    display: 'inline-block',
+    textAlign: 'center' as const, // TypeScript needs this type assertion
+    whiteSpace: 'nowrap' as const
+  };
+
   return (
-    <Button onClick={handleConnectWallet}>
-      {injectiveAddress ? formattedAddress : "Connect Wallet"}
+    <Button onClick={handleConnectWallet} style={buttonStyle}>
+      {injectiveAddress ? injectiveAddress : "Connect Wallet"}
     </Button>
   );
 };

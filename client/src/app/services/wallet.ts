@@ -1,5 +1,6 @@
 import { WalletStrategy } from "@injectivelabs/wallet-strategy";
 import { Web3Exception } from "@injectivelabs/exceptions";
+import { Wallet } from "@injectivelabs/wallet-base";
 import {
   CHAIN_ID,
   ETHEREUM_CHAIN_ID,
@@ -12,10 +13,12 @@ export const walletStrategy = new WalletStrategy({
     ethereumChainId: ETHEREUM_CHAIN_ID,
     rpcUrl: alchemyRpcEndpoint,
   },
-  strategies: {}
+  strategies: {},
 });
 
 export const getAddresses = async (): Promise<string[]> => {
+  walletStrategy.setWallet(Wallet.Keplr)
+
   const addresses = await walletStrategy.getAddresses();
 
   if (addresses.length === 0) {

@@ -19,9 +19,16 @@ export const useWalletStore = create<WalletState>()((set, get) => ({
 
     const [address] = await getAddresses();
 
+    let injectiveAddress;
+    if (address.startsWith("inj")) {
+      injectiveAddress = address;
+    } else {
+      injectiveAddress = getInjectiveAddress(address);
+    }
+
     set({
       ethereumAddress: address,
-      injectiveAddress: getInjectiveAddress(address),
+      injectiveAddress: injectiveAddress,
     });
   },
 }));
