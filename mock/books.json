@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "The Silent Echo",
+    "author": "Elena Brightwood",
+    "year": 2019,
+    "genre": "Mystery",
+    "isbn": "978-1-4321-0987-5",
+    "rating": 4.2,
+    "publisher": "Moonlight Press"
+  },
+  {
+    "id": 2,
+    "title": "Beyond the Horizon",
+    "author": "Marcus Thornhill",
+    "year": 2020,
+    "genre": "Science Fiction",
+    "isbn": "978-0-7654-3210-8",
+    "rating": 4.7,
+    "publisher": "Nova Publications"
+  },
+  {
+    "id": 3,
+    "title": "Whispers in the Wind",
+    "author": "Sophia Blackwood",
+    "year": 2018,
+    "genre": "Fantasy",
+    "isbn": "978-3-1598-2468-0",
+    "rating": 4.5,
+    "publisher": "Enchanted Books"
+  },
+  {
+    "id": 4,
+    "title": "The Last Theorem",
+    "author": "Richard Hawkins",
+    "year": 2021,
+    "genre": "Academic",
+    "isbn": "978-5-9753-1357-9",
+    "rating": 4.0,
+    "publisher": "Quantum Publishing"
+  },
+  {
+    "id": 5,
+    "title": "Garden of Shadows",
+    "author": "Isabella Nightshade",
+    "year": 2017,
+    "genre": "Horror",
+    "isbn": "978-2-8642-9753-1",
+    "rating": 4.3,
+    "publisher": "Midnight Tales"
+  },
+  {
+    "id": 6,
+    "title": "Coding the Future",
+    "author": "Alex Programmer",
+    "year": 2022,
+    "genre": "Technology",
+    "isbn": "978-6-5432-1098-7",
+    "rating": 4.8,
+    "publisher": "Tech Press"
+  },
+  {
+    "id": 7,
+    "title": "Heart's Desire",
+    "author": "Olivia Heartfield",
+    "year": 2020,
+    "genre": "Romance",
+    "isbn": "978-8-7654-3210-9",
+    "rating": 4.1,
+    "publisher": "Love Books Ltd"
+  },
+  {
+    "id": 8,
+    "title": "The Historian's Journey",
+    "author": "Daniel Chronos",
+    "year": 2019,
+    "genre": "Historical Fiction",
+    "isbn": "978-9-8765-4321-0",
+    "rating": 4.6,
+    "publisher": "Time Travel Press"
+  },
+  {
+    "id": 9,
+    "title": "Peaks and Valleys",
+    "author": "Sarah Mountaineer",
+    "year": 2021,
+    "genre": "Self-Help",
+    "isbn": "978-0-1234-5678-9",
+    "rating": 4.4,
+    "publisher": "Growth Publications"
+  },
+  {
+    "id": 10,
+    "title": "The Secret Recipe",
+    "author": "Gordon Cuisine",
+    "year": 2018,
+    "genre": "Cookbook",
+    "isbn": "978-7-9876-5432-1",
+    "rating": 4.9,
+    "publisher": "Culinary Arts Press"
+  }
+] 

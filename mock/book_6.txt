@@ -1,0 +1,7 @@
+Coding the Future
+
+Nam malesuada tincidunt risus, vel vestibulum mi finibus eu. Mauris eget condimentum lacus. Ut nec diam vitae lectus ultrices ultricies. Aenean sollicitudin scelerisque dignissim. Nullam euismod lacus et ipsum commodo consequat. Sed quis magna tempus, suscipit orci eget, dictum sem. Ut vehicula elit id dui posuere, non tincidunt purus semper.
+
+Fusce eget mollis nulla. In hac habitasse platea dictumst. Nulla facilisi. Nam euismod, nisi in efficitur dignissim, eros diam hendrerit sapien, eget scelerisque mauris velit id magna. Integer eget sapien enim. Aenean bibendum lacus non nisi scelerisque, ut euismod dui lobortis. Aenean fringilla, velit non cursus semper, odio mauris egestas lacus, at lacinia orci nisl sit amet sem.
+
+In this groundbreaking exploration of the future of software development, renowned technologist Alex Programmer presents a roadmap for how artificial intelligence will transform coding practices over the next decade. From self-healing systems to collaborative AI pair programming, this book examines cutting-edge research and practical applications already emerging in the field. With interviews from leading computer scientists and case studies from innovative tech companies, Coding the Future offers both technical insights and strategic guidance for developers, engineers, and organizations preparing to navigate the rapidly evolving technological landscape. 
