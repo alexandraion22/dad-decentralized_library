@@ -55,15 +55,14 @@ fn execute_add_book(
     let book = Book {
         title,
         author,
-        owner: owner.clone(),
+        owner,
     };
 
     BOOKS.save(deps.storage, &token_id, &book)?;
 
     Ok(Response::new()
         .add_attribute("action", "add_book")
-        .add_attribute("token_id", token_id)
-        .add_attribute("owner", owner.to_string()))
+        .add_attribute("token_id", token_id))
 }
 
 /// Allows a user to borrow a book if it is not already borrowed
@@ -81,8 +80,7 @@ fn execute_borrow_book(
 
     Ok(Response::new()
         .add_attribute("action", "borrow_book")
-        .add_attribute("token_id", token_id)
-        .add_attribute("borrower", borrower.to_string()))
+        .add_attribute("token_id", token_id))
 }
 
 /// Allows the borrower to return a book they have borrowed
@@ -108,9 +106,8 @@ fn execute_return_book(
 pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> Result<Binary, ContractError> {
     match msg {
         QueryMsg::GetBorrower { token_id } => {
-            let borrower = BORROWERS.may_load(deps.storage, &token_id)
-                .map_err(|e| ContractError::Std(e.into()))?;
-            Ok(to_json_binary(&borrower)?) // Serialize borrower to JSON
+            let borrower = BORROWERS.may_load(deps.storage, &token_id)?;
+            Ok(to_json_binary(&borrower)?)
         }
         QueryMsg::GetBook { token_id } => query_book(deps, token_id),
         QueryMsg::GetAllBooks {} => query_all_books(deps),
@@ -119,20 +116,20 @@ pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> Result<Binary, ContractErr
 
 /// Retrieves details of a specific book by its token ID
 fn query_book(deps: Deps, token_id: String) -> Result<Binary, ContractError> {
-    let book = BOOKS.load(deps.storage, &token_id)
-        .map_err(|e| ContractError::Std(e.into()))?;
+    let book = BOOKS.load(deps.storage, &token_id)?;
     Ok(to_json_binary(&book)?)
 }
 
 /// Retrieves details of all books in the library.
 fn query_all_books(deps: Deps) -> Result<Binary, ContractError> {
-    let books: Vec<(String, Book)> = BOOKS
-        .range(deps.storage, None, None, cosmwasm_std::Order::Ascending)
-        .map(|item| {
-            let (key, book) = item?;
-            Ok((key, book))
-        })
-        .collect::<Result<Vec<_>, cosmwasm_std::StdError>>()?;
+    // Use a more gas-efficient approach by limiting the number of books returned
+    const MAX_BOOKS: usize = 100;
+    let mut books = Vec::with_capacity(MAX_BOOKS);
+    
+    for item in BOOKS.range(deps.storage, None, None, cosmwasm_std::Order::Ascending).take(MAX_BOOKS) {
+        let (key, book) = item?;
+        books.push((key, book));
+    }
 
     Ok(to_json_binary(&books)?)
 }
