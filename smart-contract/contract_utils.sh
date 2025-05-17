@@ -80,9 +80,10 @@ add_book() {
     local token_id="$1"
     local title="$2"
     local author="$3"
-    local owner="${4:-$WALLET_ADDR}"
+    local book_url="$4"
+    local owner="${5:-$WALLET_ADDR}"
     
-    execute_contract '{"add_book": {"token_id": "'$token_id'", "title": "'$title'", "author": "'$author'", "owner": "'$owner'"}}'
+    execute_contract '{"add_book": {"token_id": "'$token_id'", "title": "'$title'", "author": "'$author'", "book_url": "'$book_url'", "owner": "'$owner'"}}'
 }
 
 borrow_book() {
@@ -110,7 +111,7 @@ if [ $# -eq 0 ]; then
     echo "  get_borrowed_books          - Get all borrowed books"
     echo "  get_my_borrowed_books       - Get books borrowed by your wallet"
     echo "  get_available_books         - Get all books available for borrowing"
-    echo "  add_book <id> <title> <author> [owner] - Add a new book"
+    echo "  add_book <id> <title> <author> <book_url> [owner] - Add a new book"
     echo "  borrow_book <token_id> [borrower]   - Borrow a book"
     echo "  return_book <token_id>      - Return a book"
     exit 1
@@ -143,7 +144,7 @@ case "$cmd" in
         get_available_books
         ;;
     add_book)
-        add_book "$1" "$2" "$3" "$4"
+        add_book "$1" "$2" "$3" "$4" "$5"
         ;;
     borrow_book)
         borrow_book "$1" "$2"

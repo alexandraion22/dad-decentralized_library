@@ -49,10 +49,10 @@ echo "Contract instantiated with address: $CONTRACT_ADDR"
 read -p "Manually enter the contract_address of the instance: " CONTRACT_ADDR1
 # 4. Add books
 echo "Adding books..."
-injectived tx wasm execute $CONTRACT_ADDR '{"add_book": {"token_id": "book1", "title": "The Lightning Thief", "author": "Rick Riordan", "owner": "'$WALLET_ADDR'"}}' \
+injectived tx wasm execute $CONTRACT_ADDR '{"add_book": {"token_id": "book1", "title": "The Lightning Thief", "author": "Rick Riordan", "book_url": "https://example.com/books/lightning_thief.pdf", "owner": "'$WALLET_ADDR'"}}' \
   --from $FROM --gas auto --gas-adjustment 1.3 --fees $FEES --broadcast-mode sync -y
 
-injectived tx wasm execute $CONTRACT_ADDR '{"add_book": {"token_id": "book2", "title": "The Sea of Monsters", "author": "Rick Riordan", "owner": "'$WALLET_ADDR'"}}' \
+injectived tx wasm execute $CONTRACT_ADDR '{"add_book": {"token_id": "book2", "title": "The Sea of Monsters", "author": "Rick Riordan", "book_url": "https://example.com/books/sea_of_monsters.pdf", "owner": "'$WALLET_ADDR'"}}' \
   --from $FROM --gas auto --gas-adjustment 1.3 --fees $FEES --broadcast-mode sync -y
 
 # # 5. Borrow a book

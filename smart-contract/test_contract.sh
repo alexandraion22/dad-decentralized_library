@@ -59,7 +59,7 @@ print_separator "TEST SESSION STARTED"
 # Test 1: Add a new book
 print_separator "TEST 1: ADDING A NEW BOOK"
 echo "Test 1: Adding a new book..."
-echo "$PASSPHRASE" | injectived tx wasm execute $CONTRACT_ADDR '{"add_book": {"token_id": "test_book1", "title": "Test Book 1", "author": "Test Author", "owner": "'$WALLET_ADDR'"}}' \
+echo "$PASSPHRASE" | injectived tx wasm execute $CONTRACT_ADDR '{"add_book": {"token_id": "test_book1", "title": "Test Book 1", "author": "Test Author", "url": "https://example.com/books/test_book1.pdf", "owner": "'$WALLET_ADDR'"}}' \
     --from $FROM --gas auto --gas-adjustment 1.3 --fees $FEES --broadcast-mode sync -y
 check_status "Add book"
 wait_for_tx
@@ -127,7 +127,7 @@ fi
 # Test 8: Add a second book and borrow it
 print_separator "TEST 8: ADDING AND BORROWING A SECOND BOOK"
 echo "Test 8: Adding a second book..."
-echo "$PASSPHRASE" | injectived tx wasm execute $CONTRACT_ADDR '{"add_book": {"token_id": "test_book2", "title": "Test Book 2", "author": "Test Author 2", "owner": "'$WALLET_ADDR'"}}' \
+echo "$PASSPHRASE" | injectived tx wasm execute $CONTRACT_ADDR '{"add_book": {"token_id": "test_book2", "title": "Test Book 2", "author": "Test Author 2", "url": "https://example.com/books/test_book2.pdf", "owner": "'$WALLET_ADDR'"}}' \
     --from $FROM --gas auto --gas-adjustment 1.3 --fees $FEES --broadcast-mode sync -y
 check_status "Add second book"
 wait_for_tx

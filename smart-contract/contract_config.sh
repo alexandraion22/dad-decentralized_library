@@ -10,15 +10,15 @@ STORE_FEES="273000000000000inj"
 
 # Contract configuration
 # Previous contract (no-admin, cannot be migrated)
-OLD_CONTRACT_ADDR="inj12pzg8dpxn8fp2f56gs684a9r7wuf50s0q48r09"
-OLD_CODE_ID="31988"
+OLD_CONTRACT_ADDR="inj1gsp0n2l7sx4ahr03s5e3ch72f6jepkgchvqpwq"
+OLD_CODE_ID="31991"
 
 # Current contract (with admin, can be migrated)
-CONTRACT_ADDR="inj12pzg8dpxn8fp2f56gs684a9r7wuf50s0q48r09"
-CODE_ID="31988"
+CONTRACT_ADDR="inj1gsp0n2l7sx4ahr03s5e3ch72f6jepkgchvqpwq"
+CODE_ID="31991"
 
 # Last deployment timestamp
-LAST_DEPLOYMENT="Sat May 17 09:40:32 PM EEST 2025"
+LAST_DEPLOYMENT="Sat May 17 10:36:45 PM EEST 2025"
 
 # Usage:
 # To source this file in other scripts, use:

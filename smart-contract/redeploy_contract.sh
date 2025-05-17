@@ -60,13 +60,13 @@ echo "IMPORTANT: Save this contract address for future use."
 
 # 4. Add some initial books
 echo "Adding initial books..."
-echo "$PASSPHRASE" | injectived tx wasm execute $NEW_CONTRACT_ADDR '{"add_book": {"token_id": "book1", "title": "The Lightning Thief", "author": "Rick Riordan", "owner": "'$WALLET_ADDR'"}}' \
+echo "$PASSPHRASE" | injectived tx wasm execute $NEW_CONTRACT_ADDR '{"add_book": {"token_id": "book1", "title": "The Lightning Thief", "author": "Rick Riordan", "url": "https://example.com/books/lightning_thief.pdf", "owner": "'$WALLET_ADDR'"}}' \
   --from $FROM --gas auto --gas-adjustment 1.3 --fees $FEES --broadcast-mode sync -y
 
 echo "Waiting for transaction to be processed..."
 sleep 5
 
-echo "$PASSPHRASE" | injectived tx wasm execute $NEW_CONTRACT_ADDR '{"add_book": {"token_id": "book2", "title": "The Sea of Monsters", "author": "Rick Riordan", "owner": "'$WALLET_ADDR'"}}' \
+echo "$PASSPHRASE" | injectived tx wasm execute $NEW_CONTRACT_ADDR '{"add_book": {"token_id": "book2", "title": "The Sea of Monsters", "author": "Rick Riordan", "url": "https://example.com/books/sea_of_monsters.pdf", "owner": "'$WALLET_ADDR'"}}' \
   --from $FROM --gas auto --gas-adjustment 1.3 --fees $FEES --broadcast-mode sync -y
 
 echo "Waiting for transaction to be processed..."
