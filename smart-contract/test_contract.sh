@@ -6,13 +6,19 @@ WALLET_ADDR="inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9"
 FROM="wallet"
 FEES="500000000000000inj"
 
+# Array to store test results
+declare -a TEST_RESULTS
+
 # Function to check if a command was successful
 check_status() {
     if [ $? -eq 0 ]; then
         echo "✅ $1 successful"
+        TEST_RESULTS+=("✅ $1")
+        return 0
     else
         echo "❌ $1 failed"
-        exit 1
+        TEST_RESULTS+=("❌ $1")
+        return 1
     fi
 }
 
@@ -28,6 +34,16 @@ print_separator() {
     echo "=========================================="
     echo "          $1"
     echo "=========================================="
+    echo ""
+}
+
+# Function to print test summary
+print_summary() {
+    print_separator "TEST SUMMARY"
+    echo "Test Results:"
+    for result in "${TEST_RESULTS[@]}"; do
+        echo "$result"
+    done
     echo ""
 }
 
@@ -101,17 +117,24 @@ check_status "Query all books"
 # Test 7: Try to borrow a non-existent book (should fail)
 print_separator "TEST 7: ATTEMPTING TO BORROW NON-EXISTENT BOOK"
 echo "Test 7: Attempting to borrow non-existent book..."
-echo "$PASSPHRASE" | injectived tx wasm execute $CONTRACT_ADDR '{"borrow_book": {"token_id": "non_existent_book", "borrower": "'$WALLET_ADDR'"}}' \
-    --from $WALLET_ADDR --gas auto --gas-adjustment 1.3 --fees $FEES --broadcast-mode sync -y
-if [ $? -ne 0 ]; then
+RESPONSE=$(echo "$PASSPHRASE" | injectived tx wasm execute $CONTRACT_ADDR '{"borrow_book": {"token_id": "non_existent_book", "borrower": "'$WALLET_ADDR'"}}' \
+    --from $WALLET_ADDR --gas auto --gas-adjustment 1.3 --fees $FEES --broadcast-mode sync -y)
+
+# Check if the response contains an error message or empty result
+if echo "$RESPONSE" | grep -q "Error\|error\|failed\|code: [1-9]" || [ -z "$(echo "$RESPONSE" | grep -v '^$')" ]; then
     echo "✅ Expected failure for non-existent book"
+    TEST_RESULTS+=("✅ Borrow non-existent book (expected failure)")
 else
     echo "❌ Unexpected success for non-existent book"
-    exit 1
+    echo "Response: $RESPONSE"
+    TEST_RESULTS+=("❌ Borrow non-existent book (unexpected success)")
 fi
 
 # Clear passphrase from memory
 PASSPHRASE=""
+
+# Print test summary
+print_summary
 
 print_separator "TEST SESSION COMPLETED"
 echo "All tests completed!" 
