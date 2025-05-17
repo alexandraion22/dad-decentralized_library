@@ -1,0 +1,265 @@
+user@machine: ~/dad-decentralized_library/smart-contract$ ./test_contract.sh
+Please enter your wallet passphrase:
+Passphrase saved temporarily for this session.
+Starting contract tests...
+Contract address: inj1p63p0uwczqd00m9cjxahc78z6ejjq2zgwjm5j2
+Wallet address: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+
+======================================================================
+          TEST SESSION STARTED
+======================================================================
+
+
+======================================================================
+          TEST 1: ADDING A NEW BOOK
+======================================================================
+
+Test 1: Adding a new book...
+gas estimate: 220057
+code: 0
+codespace: ""
+data: ""
+events: []
+gas_used: "0"
+gas_wanted: "0"
+height: "0"
+info: ""
+logs: []
+raw_log: ""
+timestamp: ""
+tx: null
+txhash: 6183AC6634A72B3CB4F2CD31AE36A3C792F680250D0B789C9D0B7D2363D3633D
+✅ Add book successful
+Waiting for transaction to be processed...
+
+======================================================================
+          TEST 2: QUERYING THE ADDED BOOK
+======================================================================
+
+Test 2: Querying the added book...
+data:
+  author: Test Author
+  owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+  title: Test Book 1
+  url: https://example.com/books/test_book1.pdf
+✅ Query book successful
+
+======================================================================
+          TEST 3: BORROWING THE BOOK
+======================================================================
+
+Test 3: Borrowing the book...
+Current wallet address: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+Using FROM account: wallet
+Checking book state before borrowing...
+data:
+  author: Test Author
+  owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+  title: Test Book 1
+  url: https://example.com/books/test_book1.pdf
+Attempting to borrow book...
+gas estimate: 199908
+code: 0
+codespace: ""
+data: ""
+events: []
+gas_used: "0"
+gas_wanted: "0"
+height: "0"
+info: ""
+logs: []
+raw_log: ""
+timestamp: ""
+tx: null
+txhash: FA6AC2AB1EBD182CC42017755279766E7A1330BAC6CEB0BAD4BAB9591CF55771
+✅ Borrow book successful
+Waiting for transaction to be processed...
+Checking book state after borrowing...
+data:
+  author: Test Author
+  owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+  title: Test Book 1
+  url: https://example.com/books/test_book1.pdf
+
+======================================================================
+          TEST 4: QUERYING BORROWER
+======================================================================
+
+Test 4: Querying borrower...
+data: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+✅ Query borrower successful
+
+======================================================================
+          TEST 5: RETURNING THE BOOK
+======================================================================
+
+Test 5: Returning the book...
+gas estimate: 194802
+code: 0
+codespace: ""
+data: ""
+events: []
+gas_used: "0"
+gas_wanted: "0"
+height: "0"
+info: ""
+logs: []
+raw_log: ""
+timestamp: ""
+tx: null
+txhash: 162260E8775BA7625DE9927EA66590CA0890EA982BDE588A7C98B87BAB9D25FE
+✅ Return book successful
+Waiting for transaction to be processed...
+
+======================================================================
+          TEST 6: QUERYING ALL BOOKS
+======================================================================
+
+Test 6: Querying all books...
+data:
+- - "1"
+  - author: Elena Brightwood
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: The Silent Echo
+    url: https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_1.txt
+- - "2"
+  - author: Marcus Thornhill
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: Beyond the Horizon
+    url: https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_2.txt
+- - "3"
+  - author: Sophia Blackwood
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: Whispers in the Wind
+    url: https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_3.txt
+- - "4"
+  - author: Richard Hawkins
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: The Last Theorem
+    url: https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_4.txt
+- - "5"
+  - author: Isabella Nightshade
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: Garden of Shadows
+    url: https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_5.txt
+- - "6"
+  - author: Alex Programmer
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: Coding the Future
+    url: https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_6.txt
+- - book1
+  - author: Rick Riordan
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: The Lightning Thief
+    url: https://example.com/books/lightning_thief.pdf
+- - book2
+  - author: Rick Riordan
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: The Sea of Monsters
+    url: https://example.com/books/sea_of_monsters.pdf
+- - test_book1
+  - author: Test Author
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: Test Book 1
+    url: https://example.com/books/test_book1.pdf
+✅ Query all books successful
+
+======================================================================
+          TEST 7: ATTEMPTING TO BORROW NON-EXISTENT BOOK
+======================================================================
+
+Test 7: Attempting to borrow non-existent book...
+rpc error: code = Unknown desc = [reason:"execute wasm contract failed" metadata:{key:"ABCICode" value:"5"} metadata:{key:"Codespace" value:"wasm"}]: rpc error: code = Unknown desc = failed to execute message; message index: 0: Unauthorized: execute wasm contract failed [!injective!labs/wasmd@v0.53.2-inj.2/x/wasm/keeper/keeper.go:457] With gas wanted: '150000000' and gas used: '149401' : unknown request
+✅ Expected failure for non-existent book
+
+======================================================================
+          TEST 9: QUERYING ALL BORROWED BOOKS
+======================================================================
+
+Test 9: Querying all borrowed books...
+data: []
+✅ Query all borrowed books successful
+
+======================================================================
+          TEST 10: QUERYING MY BORROWED BOOKS
+======================================================================
+
+Test 10: Querying my borrowed books...
+data: []
+✅ Query my borrowed books successful
+
+======================================================================
+          TEST 11: QUERYING AVAILABLE BOOKS
+======================================================================
+
+Test 11: Querying available books...
+data:
+- - "1"
+  - author: Elena Brightwood
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: The Silent Echo
+    url: https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_1.txt
+- - "2"
+  - author: Marcus Thornhill
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: Beyond the Horizon
+    url: https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_2.txt
+- - "3"
+  - author: Sophia Blackwood
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: Whispers in the Wind
+    url: https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_3.txt
+- - "4"
+  - author: Richard Hawkins
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: The Last Theorem
+    url: https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_4.txt
+- - "5"
+  - author: Isabella Nightshade
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: Garden of Shadows
+    url: https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_5.txt
+- - "6"
+  - author: Alex Programmer
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: Coding the Future
+    url: https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_6.txt
+- - book1
+  - author: Rick Riordan
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: The Lightning Thief
+    url: https://example.com/books/lightning_thief.pdf
+- - book2
+  - author: Rick Riordan
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: The Sea of Monsters
+    url: https://example.com/books/sea_of_monsters.pdf
+- - test_book1
+  - author: Test Author
+    owner: inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9
+    title: Test Book 1
+    url: https://example.com/books/test_book1.pdf
+✅ Query available books successful
+
+======================================================================
+          TEST SUMMARY
+======================================================================
+
+Test Results:
+✅ Add book
+✅ Query book
+✅ Borrow book
+✅ Query borrower
+✅ Return book
+✅ Query all books
+✅ Borrow non-existent book (expected failure)
+✅ Query all borrowed books
+✅ Query my borrowed books
+✅ Query available books
+
+
+======================================================================
+          TEST SESSION COMPLETED
+======================================================================
+
+All tests completed!
