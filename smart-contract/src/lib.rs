@@ -113,6 +113,7 @@ pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> Result<Binary, ContractErr
         QueryMsg::GetAllBooks {} => query_all_books(deps),
         QueryMsg::GetBorrowedBooks {} => query_borrowed_books(deps),
         QueryMsg::GetMyBorrowedBooks { borrower } => query_my_borrowed_books(deps, borrower),
+        QueryMsg::GetAvailableBooks {} => query_available_books(deps),
     }
 }
 
@@ -166,4 +167,25 @@ fn query_my_borrowed_books(deps: Deps, borrower: Addr) -> Result<Binary, Contrac
     }
 
     Ok(to_json_binary(&my_borrowed_books)?)
+}
+
+/// Retrieves details of all books that are available for borrowing (not currently borrowed)
+fn query_available_books(deps: Deps) -> Result<Binary, ContractError> {
+    const MAX_BOOKS: usize = 100;
+    let mut available_books = Vec::with_capacity(MAX_BOOKS);
+    
+    // Get all books
+    for item in BOOKS.range(deps.storage, None, None, cosmwasm_std::Order::Ascending).take(MAX_BOOKS) {
+        let (token_id, book) = item?;
+        
+        // Check if the book is currently borrowed
+        let is_borrowed = BORROWERS.may_load(deps.storage, &token_id)?.is_some();
+        
+        // If not borrowed, add to available books
+        if !is_borrowed {
+            available_books.push((token_id, book));
+        }
+    }
+
+    Ok(to_json_binary(&available_books)?)
 }

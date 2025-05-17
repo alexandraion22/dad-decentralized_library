@@ -31,4 +31,5 @@ pub enum QueryMsg {
     GetAllBooks {},
     GetBorrowedBooks {},
     GetMyBorrowedBooks { borrower: Addr },
+    GetAvailableBooks {},
 }
