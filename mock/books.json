@@ -7,7 +7,8 @@
     "genre": "Mystery",
     "isbn": "978-1-4321-0987-5",
     "rating": 4.2,
-    "publisher": "Moonlight Press"
+    "publisher": "Moonlight Press",
+    "url": "https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_1.txt"
   },
   {
     "id": 2,
@@ -17,7 +18,8 @@
     "genre": "Science Fiction",
     "isbn": "978-0-7654-3210-8",
     "rating": 4.7,
-    "publisher": "Nova Publications"
+    "publisher": "Nova Publications",
+    "url": "https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_2.txt"
   },
   {
     "id": 3,
@@ -27,7 +29,8 @@
     "genre": "Fantasy",
     "isbn": "978-3-1598-2468-0",
     "rating": 4.5,
-    "publisher": "Enchanted Books"
+    "publisher": "Enchanted Books",
+    "url": "https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_3.txt"
   },
   {
     "id": 4,
@@ -37,7 +40,8 @@
     "genre": "Academic",
     "isbn": "978-5-9753-1357-9",
     "rating": 4.0,
-    "publisher": "Quantum Publishing"
+    "publisher": "Quantum Publishing",
+    "url": "https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_4.txt"
   },
   {
     "id": 5,
@@ -47,7 +51,8 @@
     "genre": "Horror",
     "isbn": "978-2-8642-9753-1",
     "rating": 4.3,
-    "publisher": "Midnight Tales"
+    "publisher": "Midnight Tales",
+    "url": "https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_5.txt"
   },
   {
     "id": 6,
@@ -57,7 +62,8 @@
     "genre": "Technology",
     "isbn": "978-6-5432-1098-7",
     "rating": 4.8,
-    "publisher": "Tech Press"
+    "publisher": "Tech Press",
+    "url": "https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_6.txt"
   },
   {
     "id": 7,
@@ -67,7 +73,8 @@
     "genre": "Romance",
     "isbn": "978-8-7654-3210-9",
     "rating": 4.1,
-    "publisher": "Love Books Ltd"
+    "publisher": "Love Books Ltd",
+    "url": "https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_7.txt"
   },
   {
     "id": 8,
@@ -77,7 +84,8 @@
     "genre": "Historical Fiction",
     "isbn": "978-9-8765-4321-0",
     "rating": 4.6,
-    "publisher": "Time Travel Press"
+    "publisher": "Time Travel Press",
+    "url": "https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_8.txt"
   },
   {
     "id": 9,
@@ -87,7 +95,8 @@
     "genre": "Self-Help",
     "isbn": "978-0-1234-5678-9",
     "rating": 4.4,
-    "publisher": "Growth Publications"
+    "publisher": "Growth Publications",
+    "url": "https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_9.txt"
   },
   {
     "id": 10,
@@ -97,6 +106,7 @@
     "genre": "Cookbook",
     "isbn": "978-7-9876-5432-1",
     "rating": 4.9,
-    "publisher": "Culinary Arts Press"
+    "publisher": "Culinary Arts Press",
+    "url": "https://raw.githubusercontent.com/alexandraion22/dad-decentralized_library/refs/heads/new-contracts/mock/book_10.txt"
   }
 ] 
