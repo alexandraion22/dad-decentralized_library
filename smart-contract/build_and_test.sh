@@ -6,16 +6,17 @@ WASM_TARGET="target/wasm32-unknown-unknown/release/cw721_metadata_onchain.wasm"
 WALLET_ADDR="inj1d9d82j5xzlp50udmd7fnkdnruelxytaxhxd228"
 FROM="wallet"
 FEES="500000000000000inj"
-STORE_FEES="250000000000000inj"
+STORE_FEES="273000000000000inj"
 
 # 1. Build the contract
 echo "Building contract..."
 cd $CONTRACT_PATH
-cargo build --release --target wasm32-unknown-unknown
+RUSTFLAGS='-C target-feature=-bulk-memory' cargo build --release --target wasm32-unknown-unknown
+wasm-strip target/wasm32-unknown-unknown/release/cw721_metadata_onchain.wasm
 
 # 2. Upload the contract
 echo "Uploading contract..."
-injectived tx wasm store $WASM_TARGET --from $WALLET_ADDR --fees $STORE_FEES --gas 1500000 -y
+injectived tx wasm store $WASM_TARGET --from $WALLET_ADDR --fees $STORE_FEES --gas 1700000 -y
 
 echo ""
 read -p "Manually enter the code_id returned from the upload: " CODE_ID
