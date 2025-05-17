@@ -1,5 +1,4 @@
 import React from "react";
-import WalletConnect from "./App/WalletConnect";
 import InjectiveLogo from "./InjectiveLogo";
 
 type Props = {};
@@ -7,9 +6,6 @@ type Props = {};
 const InjectiveWelcome = (props: Props) => {
   return (
     <div>
-      <div className='absolute inset-x-0 flex justify-end p-4'>
-        <WalletConnect />
-      </div>
       <main className='min-h-screen grid place-items-center'>
         <div className='flex flex-col items-center'>
           <div className='w-[20vw] mx-auto mb-10'>

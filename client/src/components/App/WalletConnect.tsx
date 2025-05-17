@@ -23,7 +23,7 @@ const WalletConnect = (props: Props) => {
   };
 
   return (
-    <Button onClick={handleConnectWallet} style={buttonStyle}>
+    <Button variant="default" onClick={handleConnectWallet} style={buttonStyle}>
       {injectiveAddress ? injectiveAddress : "Connect Wallet"}
     </Button>
   );
