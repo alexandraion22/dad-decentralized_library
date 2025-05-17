@@ -150,6 +150,12 @@ echo "Test 10: Querying my borrowed books..."
 injectived query wasm contract-state smart $CONTRACT_ADDR '{"get_my_borrowed_books": {"borrower": "'$WALLET_ADDR'"}}'
 check_status "Query my borrowed books"
 
+# Test 11: Query available books
+print_separator "TEST 11: QUERYING AVAILABLE BOOKS"
+echo "Test 11: Querying available books..."
+injectived query wasm contract-state smart $CONTRACT_ADDR '{"get_available_books": {}}'
+check_status "Query available books"
+
 # Clear passphrase from memory
 PASSPHRASE=""
 

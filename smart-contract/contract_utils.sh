@@ -71,6 +71,10 @@ get_my_borrowed_books() {
     query_contract '{"get_my_borrowed_books": {"borrower": "'$address'"}}'
 }
 
+get_available_books() {
+    query_contract '{"get_available_books": {}}'
+}
+
 # Helper for common executions
 add_book() {
     local token_id="$1"
@@ -105,6 +109,7 @@ if [ $# -eq 0 ]; then
     echo "  get_borrower <token_id>     - Get borrower of a book"
     echo "  get_borrowed_books          - Get all borrowed books"
     echo "  get_my_borrowed_books       - Get books borrowed by your wallet"
+    echo "  get_available_books         - Get all books available for borrowing"
     echo "  add_book <id> <title> <author> [owner] - Add a new book"
     echo "  borrow_book <token_id> [borrower]   - Borrow a book"
     echo "  return_book <token_id>      - Return a book"
@@ -133,6 +138,9 @@ case "$cmd" in
         ;;
     get_my_borrowed_books)
         get_my_borrowed_books "$1"
+        ;;
+    get_available_books)
+        get_available_books
         ;;
     add_book)
         add_book "$1" "$2" "$3" "$4"
