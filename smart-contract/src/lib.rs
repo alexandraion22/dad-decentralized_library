@@ -111,6 +111,8 @@ pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> Result<Binary, ContractErr
         }
         QueryMsg::GetBook { token_id } => query_book(deps, token_id),
         QueryMsg::GetAllBooks {} => query_all_books(deps),
+        QueryMsg::GetBorrowedBooks {} => query_borrowed_books(deps),
+        QueryMsg::GetMyBorrowedBooks { borrower } => query_my_borrowed_books(deps, borrower),
     }
 }
 
@@ -132,4 +134,36 @@ fn query_all_books(deps: Deps) -> Result<Binary, ContractError> {
     }
 
     Ok(to_json_binary(&books)?)
+}
+
+/// Retrieves details of all borrowed books in the library
+fn query_borrowed_books(deps: Deps) -> Result<Binary, ContractError> {
+    const MAX_BOOKS: usize = 100;
+    let mut borrowed_books = Vec::with_capacity(MAX_BOOKS);
+    
+    for item in BORROWERS.range(deps.storage, None, None, cosmwasm_std::Order::Ascending).take(MAX_BOOKS) {
+        let (token_id, borrower) = item?;
+        if let Ok(book) = BOOKS.load(deps.storage, &token_id) {
+            borrowed_books.push((token_id, book, borrower));
+        }
+    }
+
+    Ok(to_json_binary(&borrowed_books)?)
+}
+
+/// Retrieves details of all books borrowed by a specific address
+fn query_my_borrowed_books(deps: Deps, borrower: Addr) -> Result<Binary, ContractError> {
+    const MAX_BOOKS: usize = 100;
+    let mut my_borrowed_books = Vec::with_capacity(MAX_BOOKS);
+    
+    for item in BORROWERS.range(deps.storage, None, None, cosmwasm_std::Order::Ascending).take(MAX_BOOKS) {
+        let (token_id, current_borrower) = item?;
+        if current_borrower == borrower {
+            if let Ok(book) = BOOKS.load(deps.storage, &token_id) {
+                my_borrowed_books.push((token_id, book));
+            }
+        }
+    }
+
+    Ok(to_json_binary(&my_borrowed_books)?)
 }

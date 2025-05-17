@@ -29,4 +29,6 @@ pub enum QueryMsg {
     GetBorrower { token_id: String },
     GetBook { token_id: String },
     GetAllBooks {},
+    GetBorrowedBooks {},
+    GetMyBorrowedBooks { borrower: Addr },
 }
