@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# Configure variables
-CONTRACT_ADDR="inj1cde7ujdyvhj8cftdwaumvkzj4rqdv6hnjfvl8c"
-WALLET_ADDR="inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9"
-FROM="wallet"
-FEES="500000000000000inj"
+# Source configuration
+cd "$(dirname "$0")"  # Make sure we're in the smart-contract directory
+source "./contract_config.sh"
 
 # Array to store test results
 declare -a TEST_RESULTS
@@ -31,9 +29,10 @@ wait_for_tx() {
 # Function to print separator
 print_separator() {
     echo ""
-    echo "=========================================="
+    echo "======================================================================"
+
     echo "          $1"
-    echo "=========================================="
+    echo "======================================================================"
     echo ""
 }
 
@@ -52,11 +51,6 @@ echo "Please enter your wallet passphrase:"
 read -s PASSPHRASE
 echo "Passphrase saved temporarily for this session."
 
-# Check if contract address is provided
-if [ -z "$CONTRACT_ADDR" ]; then
-    read -p "Enter the contract address to test: " CONTRACT_ADDR
-fi
-
 echo "Starting contract tests..."
 echo "Contract address: $CONTRACT_ADDR"
 echo "Wallet address: $WALLET_ADDR"
@@ -65,7 +59,7 @@ print_separator "TEST SESSION STARTED"
 # Test 1: Add a new book
 print_separator "TEST 1: ADDING A NEW BOOK"
 echo "Test 1: Adding a new book..."
-echo "$PASSPHRASE" | injectived tx wasm execute $CONTRACT_ADDR '{"add_book": {"token_id": "test_book1", "title": "Test Book 1", "author": "Test Author", "owner": "'$WALLET_ADDR'"}}' \
+echo "$PASSPHRASE" | injectived tx wasm execute $CONTRACT_ADDR '{"add_book": {"token_id": "test_book1", "title": "Test Book 1", "author": "Test Author", "url": "https://example.com/books/test_book1.pdf", "owner": "'$WALLET_ADDR'"}}' \
     --from $FROM --gas auto --gas-adjustment 1.3 --fees $FEES --broadcast-mode sync -y
 check_status "Add book"
 wait_for_tx
@@ -129,6 +123,38 @@ else
     echo "Response: $RESPONSE"
     TEST_RESULTS+=("❌ Borrow non-existent book (unexpected success)")
 fi
+
+# Test 8: Add a second book and borrow it
+#print_separator "TEST 8: ADDING AND BORROWING A SECOND BOOK"
+#echo "Test 8: Adding a second book..."
+#echo "$PASSPHRASE" | injectived tx wasm execute $CONTRACT_ADDR '{"add_book": {"token_id": "test_book2", "title": "Test Book 2", "author": "Test Author 2", "url": "https://example.com/books/test_book2.pdf", "owner": "'$WALLET_ADDR'"}}' \
+#    --from $FROM --gas auto --gas-adjustment 1.3 --fees $FEES --broadcast-mode sync -y
+#check_status "Add second book"
+#wait_for_tx
+#
+#echo "Borrowing the second book..."
+#echo "$PASSPHRASE" | injectived tx wasm execute $CONTRACT_ADDR '{"borrow_book": {"token_id": "test_book2", "borrower": "'$WALLET_ADDR'"}}' \
+#    --from $FROM --gas auto --gas-adjustment 1.3 --fees $FEES --broadcast-mode sync -y
+#check_status "Borrow second book"
+#wait_for_tx
+
+# Test 9: Query all borrowed books
+print_separator "TEST 9: QUERYING ALL BORROWED BOOKS"
+echo "Test 9: Querying all borrowed books..."
+injectived query wasm contract-state smart $CONTRACT_ADDR '{"get_borrowed_books": {}}'
+check_status "Query all borrowed books"
+
+# Test 10: Query my borrowed books
+print_separator "TEST 10: QUERYING MY BORROWED BOOKS"
+echo "Test 10: Querying my borrowed books..."
+injectived query wasm contract-state smart $CONTRACT_ADDR '{"get_my_borrowed_books": {"borrower": "'$WALLET_ADDR'"}}'
+check_status "Query my borrowed books"
+
+# Test 11: Query available books
+print_separator "TEST 11: QUERYING AVAILABLE BOOKS"
+echo "Test 11: Querying available books..."
+injectived query wasm contract-state smart $CONTRACT_ADDR '{"get_available_books": {}}'
+check_status "Query available books"
 
 # Clear passphrase from memory
 PASSPHRASE=""
