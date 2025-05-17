@@ -33,8 +33,8 @@ pub fn execute(
     msg: ExecuteMsg,
 ) -> Result<Response, ContractError> {
     match msg {
-        ExecuteMsg::AddBook { token_id, title, author, owner } => {
-            execute_add_book(deps, info, token_id, title, author, owner)
+        ExecuteMsg::AddBook { token_id, title, author, url, owner } => {
+            execute_add_book(deps, info, token_id, title, author, url, owner)
         }
         ExecuteMsg::BorrowBook { token_id, borrower } => {
             execute_borrow_book(deps, info, token_id, borrower)
@@ -50,11 +50,13 @@ fn execute_add_book(
     token_id: String,
     title: String,
     author: String,
+    url: String,
     owner: Addr,
 ) -> Result<Response, ContractError> {
     let book = Book {
         title,
         author,
+        url,
         owner,
     };
 

@@ -12,6 +12,7 @@ pub enum ExecuteMsg {
         token_id: String,
         title: String,
         author: String,
+        url: String,
         owner: Addr,
     },
     BorrowBook {

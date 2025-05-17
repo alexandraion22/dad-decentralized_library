@@ -7,6 +7,7 @@ use serde::{Deserialize, Serialize};
 pub struct Book {
     pub title: String,
     pub author: String,
+    pub url: String,
     pub owner: Addr,
 }
 
