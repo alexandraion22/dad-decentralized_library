@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import WalletConnect from "../App/WalletConnect";
 import Button from "../App/Button";
 import { useWalletStore } from "../../store/wallet";
@@ -15,15 +16,21 @@ const Navbar = (props: Props) => {
         <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
           {injectiveAddress && (
             <div className="flex items-center gap-2">
-              <Button variant="nav">Available Books</Button>
-              <Button variant="nav">Borrowed Books</Button>
+              <Link to="/available-books">
+                <Button variant="nav">Available Books</Button>
+              </Link>
+              <Link to="/borrowed-books">
+                <Button variant="nav">Borrowed Books</Button>
+              </Link>
             </div>
           )}
         </div>
         
         {/* Middle - title */}
         <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <h1 className="text-xl font-bold text-white whitespace-nowrap">Decentralized Library</h1>
+          <Link to="/">
+            <h1 className="text-xl font-bold text-white whitespace-nowrap hover:text-green-200 transition-colors">Decentralized Library</h1>
+          </Link>
         </div>
         
         {/* Right side - wallet connection */}
