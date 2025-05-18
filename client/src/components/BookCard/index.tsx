@@ -3,10 +3,11 @@ import React from "react";
 export type BookCardProps = {
   title: string;
   author: string;
+  url?: string;
   onClick?: () => void;
 };
 
-const BookCard = ({ title, author, onClick }: BookCardProps) => {
+const BookCard = ({ title, author, url, onClick }: BookCardProps) => {
   return (
     <div 
       className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-green-200/20 
@@ -20,6 +21,20 @@ const BookCard = ({ title, author, onClick }: BookCardProps) => {
         </div>
         <h3 className="text-xl font-bold text-white mb-2 truncate">{title}</h3>
         <p className="text-gray-400 truncate">by {author}</p>
+        
+        {url && (
+          <div className="mt-4 pt-4 border-t border-gray-700">
+            <a 
+              href={url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-green-200 hover:text-green-100 text-sm underline"
+              onClick={(e) => e.stopPropagation()}
+            >
+              View Book
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

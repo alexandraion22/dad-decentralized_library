@@ -9,6 +9,7 @@ const env = {
   VITE_NETWORK: import.meta.env.VITE_NETWORK as string,
   VITE_ETHEREUM_CHAIN_ID: import.meta.env.VITE_ETHEREUM_CHAIN_ID as string,
   VITE_CHAIN_ID: import.meta.env.VITE_CHAIN_ID as string,
+  VITE_SC_ADDRESS: import.meta.env.VITE_SC_ADDRESS as string,
 };
 
 export const ALCHEMY_SEPOLIA_KEY = env.VITE_ALCHEMY_SEPOLIA_KEY;
@@ -19,6 +20,8 @@ export const alchemyWsRpcEndpoint = `wss://eth-sepolia.ws.alchemyapi.io/v2/${ALC
 export const ETHEREUM_CHAIN_ID = (env.VITE_ETHEREUM_CHAIN_ID ||
   EthereumChainId.Sepolia) as EthereumChainId;
 export const CHAIN_ID = (env.VITE_CHAIN_ID || ChainId.Testnet) as ChainId;
+
+export const CONTRACT_ADDRESS = env.VITE_SC_ADDRESS;
 
 export const NETWORK: Network =
   (env.VITE_NETWORK as Network) || Network.Testnet;
