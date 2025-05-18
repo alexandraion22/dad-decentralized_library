@@ -27,23 +27,6 @@ const decodeResponseData = (data: Uint8Array): any => {
 };
 
 /**
- * Get a specific book by token ID
- */
-export const getBook = async (tokenId: string): Promise<Book | null> => {
-  try {
-    const queryMsg = { get_book: { token_id: tokenId } };
-    const base64queryMsg = toBase64(queryMsg);
-    
-    const response = await wasmClient.fetchSmartContractState(CONTRACT_ADDRESS, base64queryMsg);
-    
-    return decodeResponseData(response.data) as Book;
-  } catch (error) {
-    console.error("Error fetching book:", error);
-    return null;
-  }
-};
-
-/**
  * Get all books borrowed by the current user
  * This function requires the user to be connected with their wallet
  */

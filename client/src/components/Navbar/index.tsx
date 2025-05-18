@@ -22,6 +22,9 @@ const Navbar = (props: Props) => {
               <Link to="/borrowed-books">
                 <Button variant="nav">Borrowed Books</Button>
               </Link>
+              <Link to="/add-book">
+                <Button variant="nav">Add Book</Button>
+              </Link>
             </div>
           )}
         </div>

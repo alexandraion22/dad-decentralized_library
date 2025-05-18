@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import AvailableBooksPage from "./pages/AvailableBooksPage";
 import BorrowedBooksPage from "./pages/BorrowedBooksPage";
+import AddBookPage from "./pages/AddBookPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
             <Route element={<ProtectedRoute />}>
               <Route path="/available-books" element={<AvailableBooksPage />} />
               <Route path="/borrowed-books" element={<BorrowedBooksPage />} />
+              <Route path="/add-book" element={<AddBookPage />} />
             </Route>
             
             {/* Catch-all route - redirect to home */}
