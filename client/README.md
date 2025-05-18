@@ -74,8 +74,8 @@ CHAIN_ID=injective-1           # Use injective-1 for mainnet or injective-888 fo
 
 ### Prerequisites
 
-- Node.js (v16 or later)
-- npm or yarn
+- Node.js (v16 or later) (for development v24.0.2 was used)
+- npm or yarn (for development npm - v11.3.0 and yarn - v1.22.22 were used)
 - Keplr wallet browser extension
 
 ### Installation
