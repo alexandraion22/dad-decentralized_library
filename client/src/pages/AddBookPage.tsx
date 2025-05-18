@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { addBook } from "../app/services/contracts";
 import Button from "../components/App/Button";
+import { useNavigate } from "react-router-dom";
 
 const AddBookPage: React.FC = () => {
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -54,6 +56,12 @@ const AddBookPage: React.FC = () => {
       setTitle("");
       setAuthor("");
       setUrl("");
+      
+      // Automatically close modal and navigate to available books after 3 seconds
+      setTimeout(() => {
+        closeModal();
+        navigate("/available-books");
+      }, 3000);
     } catch (err) {
       setError(`Failed to add book: ${err instanceof Error ? err.message : 'Unknown error'}`);
     } finally {
@@ -96,6 +104,7 @@ const AddBookPage: React.FC = () => {
                       </div>
                     </div>
                   )}
+                  <p className="text-xs text-green-200 mt-3">Redirecting to Available Books in 3 seconds...</p>
                 </div>
               )}
               
@@ -106,7 +115,7 @@ const AddBookPage: React.FC = () => {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   className="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white"
-                  disabled={isLoading}
+                  disabled={isLoading || successMessage !== null}
                 />
               </div>
               
@@ -117,7 +126,7 @@ const AddBookPage: React.FC = () => {
                   value={author}
                   onChange={(e) => setAuthor(e.target.value)}
                   className="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white"
-                  disabled={isLoading}
+                  disabled={isLoading || successMessage !== null}
                 />
               </div>
               
@@ -128,7 +137,7 @@ const AddBookPage: React.FC = () => {
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   className="w-full p-2 bg-gray-700 border border-gray-600 rounded text-white"
-                  disabled={isLoading}
+                  disabled={isLoading || successMessage !== null}
                   placeholder="https://..."
                 />
               </div>
@@ -144,7 +153,7 @@ const AddBookPage: React.FC = () => {
                 <button
                   onClick={handleAddBook}
                   className="px-4 py-2 bg-green-700 text-white rounded hover:bg-green-600 disabled:opacity-50"
-                  disabled={isLoading}
+                  disabled={isLoading || successMessage !== null}
                 >
                   {isLoading ? "Adding..." : "Add Book"}
                 </button>
