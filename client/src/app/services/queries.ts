@@ -1,6 +1,6 @@
 import { useWalletStore } from "../../store/wallet";
 import { CONTRACT_ADDRESS } from "../utils/constants";
-import { ChainGrpcWasmApi, fromBase64, toBase64 } from "@injectivelabs/sdk-ts";
+import { ChainGrpcWasmApi, toBase64 } from "@injectivelabs/sdk-ts";
 import { ENDPOINTS } from "../utils/constants";
 
 // Define types for the responses

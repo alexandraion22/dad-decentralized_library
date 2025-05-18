@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BookCard from "../components/BookCard";
 import { getAvailableBooks, BookWithId } from "../app/services/queries";
+import Button from "../components/App/Button";
 
 const AvailableBooksPage = () => {
   const [books, setBooks] = useState<BookWithId[]>([]);
@@ -21,8 +22,8 @@ const AvailableBooksPage = () => {
     fetchBooks();
   }, []);
 
-  const handleBookClick = (bookId: string) => {
-    console.log(`Book ${bookId} clicked`);
+  const handleBorrowBook = (bookId: string) => {
+    console.log(`Book ${bookId} clicked - would borrow this book`);
     // This will be implemented in future tasks
   };
 
@@ -47,8 +48,16 @@ const AvailableBooksPage = () => {
               key={bookItem.id}
               title={bookItem.book.title}
               author={bookItem.book.author}
-              onClick={() => handleBookClick(bookItem.id)}
-            />
+            >
+              <div className="flex justify-center mt-2">
+                <Button 
+                  onClick={() => handleBorrowBook(bookItem.id)}
+                  variant="nav"
+                >
+                  Borrow Book
+                </Button>
+              </div>
+            </BookCard>
           ))}
         </div>
       )}

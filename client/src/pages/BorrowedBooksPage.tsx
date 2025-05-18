@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BookCard from "../components/BookCard";
 import { getMyBorrowedBooks, BookWithId } from "../app/services/queries";
+import Button from "../components/App/Button";
 
 const BorrowedBooksPage = () => {
   const [books, setBooks] = useState<BookWithId[]>([]);
@@ -21,9 +22,13 @@ const BorrowedBooksPage = () => {
     fetchBooks();
   }, []);
 
-  const handleBookClick = (bookId: string) => {
-    console.log(`Book ${bookId} clicked`);
+  const handleReturnBook = (bookId: string) => {
+    console.log(`Book ${bookId} clicked - would return this book`);
     // This will be implemented in future tasks
+  };
+
+  const handleViewBook = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   if (loading) {
@@ -47,9 +52,24 @@ const BorrowedBooksPage = () => {
               key={bookItem.id}
               title={bookItem.book.title}
               author={bookItem.book.author}
-              url={bookItem.book.url}
-              onClick={() => handleBookClick(bookItem.id)}
-            />
+            >
+              <div className="flex justify-center gap-4 mt-2">
+                {bookItem.book.url && (
+                  <Button 
+                    onClick={() => handleViewBook(bookItem.book.url || '')}
+                    variant="nav"
+                  >
+                    View Book
+                  </Button>
+                )}
+                <Button 
+                  onClick={() => handleReturnBook(bookItem.id)}
+                  variant="nav"
+                >
+                  Return Book
+                </Button>
+              </div>
+            </BookCard>
           ))}
         </div>
       )}
