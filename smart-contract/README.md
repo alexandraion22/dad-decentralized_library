@@ -81,5 +81,7 @@ This will install:
 ## Testing Environment
 
 The contract is deployed on the Injective Testnet. You can view all transactions related to the test deployment at:
-[Testnet Explorer](https://testnet.explorer.injective.network/account/inj1d9d82j5xzlp50udmd7fnkdnruelxytaxhxd228/transactions/)
-[Testnet Explorer](https://testnet.explorer.injective.network/account/inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9/transactions/)
+
+- [Testnet Explorer - First contract attempt + Some client transactions](https://testnet.explorer.injective.network/account/inj1d9d82j5xzlp50udmd7fnkdnruelxytaxhxd228/transactions/)
+
+- [Testnet Explorer - Second contract attempt + Some client transactions](https://testnet.explorer.injective.network/account/inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9/transactions/)
