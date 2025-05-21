@@ -1,0 +1,5 @@
+.idea/**
+
+smart-contract/target/**
+smart-contract/linux-amd64.zip
+smart-contract/peggo
