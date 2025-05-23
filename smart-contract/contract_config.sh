@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Wallet configuration
-WALLET_ADDR="inj1vvtcndw7rgxkssxffws2zspdc4mgaevhrl6vs9"
+WALLET_ADDR="inj16fphk6w6qdlv062r8cxuk5awgvpm3ylew9rj75"
 FROM="wallet"
 
 # Fee configuration
@@ -10,15 +10,15 @@ STORE_FEES="483000000000000inj"
 
 # Contract configuration
 # Previous contract (no-admin, cannot be migrated)
-OLD_CONTRACT_ADDR="inj1gsp0n2l7sx4ahr03s5e3ch72f6jepkgchvqpwq"
-OLD_CODE_ID="31991"
+OLD_CONTRACT_ADDR="inj1dp57ek20evwz885ux4v5jrssqa7kwg2glclwcl"
+OLD_CODE_ID="32001"
 
 # Current contract (with admin, can be migrated)
-CONTRACT_ADDR="inj1p63p0uwczqd00m9cjxahc78z6ejjq2zgwjm5j2" # REPLACE WITH YOUR ACTUAL CONTRACT ADDRESS
-CODE_ID="31994"
+CONTRACT_ADDR="inj1dp57ek20evwz885ux4v5jrssqa7kwg2glclwcl" # REPLACE WITH YOUR ACTUAL CONTRACT ADDRESS
+CODE_ID="32001"
 
 # Last deployment timestamp
-LAST_DEPLOYMENT="Sat May 17 11:28:18 PM EEST 2025"
+LAST_DEPLOYMENT="Sun May 18 13:06:50 EEST 2025"
 
 # Usage:
 # To source this file in other scripts, use:
